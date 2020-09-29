@@ -87,242 +87,237 @@ int main(int argc, char *argv[]) {
     printf("| (_| | |(_)| \n");
     printf(" |__, | |___| \n");
     printf(" |___/ \n");
-    
+
     while ((workStatus == FALSE) && (attempt < 7)) {
-         printf("=========================================\n");
-         printf("The word contains %d letters.\n", (int)strlen(word));
-         printf("Enter a letter: ");
-         
-         
-         char letter[MAX_LENGTH];
-         scanf(" %s", &letter[0]);
-         printf("You entered: %c\n", letter[0]);
+      printf("=========================================\n");
+      printf("The word contains %d letters.\n", (int)strlen(word));
+      printf("Enter a letter: ");
 
-         int unsolvedLetters = 0;
-         //ПРОВЕРКА БУКВЫ В СЛОВЕ
-         for (counter = 0; counter < strlen(word); counter++) {
-            if (word[counter] == letter[0]) {
-               checkArray[counter] = 1;
-            } else {
-               checkArray[counter] = 0;
-               unsolvedLetters++;
-            }
-         }
-          if (unsolvedLetters == strlen(word)) {
-            attempt++;
-         }
-         printf("Number of mistakes: %d\n", attempt);
-         hangman(attempt);
+      char letter[MAX_LENGTH];
+      scanf(" %s", &letter[0]);
+      printf("You entered: %c\n", letter[0]);
 
-         counter = 0;
-         while (counter < strlen(word)) {
-            if ((checkArray[counter] == 0) &&
-                (workArray[counter] == 0)){
-               workArray[counter] = 0;
-            } else {
-               workArray[counter] = 1;
-            }
-            counter++;
-         }
-         
-         for (counter = 0; counter < strlen(word); counter++) {
-            checkArray[counter] = 0;
-         }
+      int unsolvedLetters = 0;
+      //ПРОВЕРКА БУКВЫ В СЛОВЕ
+      for (counter = 0; counter < strlen(word); counter++) {
+        if (word[counter] == letter[0]) {
+          checkArray[counter] = 1;
+        } else {
+          checkArray[counter] = 0;
+          unsolvedLetters++;
+        }
+      }
+      if (unsolvedLetters == strlen(word)) {
+        attempt++;
+      }
+      printf("Number of mistakes: %d\n", attempt);
+      hangman(attempt);
 
-         //ПРОВЕРКА НАЙДЕННЫХ БУКВ
-         int solvedLetters = 0;  
-         for (counter = 0; counter < strlen(word); counter++) {
-            if (workArray[counter] == 1) {
-               solvedLetters++;
-            }
-         }
-
-        
-         if (solvedLetters == strlen(word)) {
-            workStatus = TRUE;
-         }
-         
-         //ВЫВОД СЛОВА
-	for (counter = 0; counter < strlen(word); counter++) {
-	 	if (workArray[counter] == 0) {
-	 		printf("_");
-	  } else if (workArray[counter] == 1) {
-		printf("%c", word[counter]);
-			}
-		}
-	printf("\n\n");
-	}
-
-	if (attempt == 7) {
-		printf("Correct word was: %s\n", word);
-		printf("YOU LOSE!\n\n");
-	} else {
-		printf("YOU WIN!\n\n");
-} 
-    //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
-      int decided = FALSE;
-      char decision[MAX_LENGTH];
-      while (decided == FALSE) {
-         printf("Do you want to play again? (y/n)\n");
-         scanf("%s", &decision[0]);
-         if (decision[0] == 'y') {
-            decided = TRUE;
-            replay = TRUE;
-            printf("\n\n");
-         } else if (decision[0] == 'n') {
-            decided = TRUE;
-            replay = FALSE;
-            printf("\n");
-         } else {
-            printf("Invalid input. Try again.\n\n");
-         }
-       }
-     }
-         
-
-    return EXIT_SUCCESS;
-  
- }
-
-  void menu() {
-    printf(" _                                             \n");
-    printf("| |                                            \n");
-    printf("| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n");
-    printf("| '_ \\ / _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ \n");
-    printf("| | | | (_| | | | | (_| | | | | | | (_| | | | | \n");
-    printf("|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_| \n");
-    printf("                    __/ |                      \n");
-    printf("                   |___/  \n");
-    printf("\n");
-    printf("By Alexey Chernikov and Andrey Gondaruk (IS_942)\n");
-    printf("\n");
-  }
-  int checkLowercase(char *inputString) {
-    int counter = 0;
-    while (counter < strlen(inputString)) {
-      //ЕСЛИ СИМВОЛ НЕ НИЖНЕГО РЕГИСТРA ВЕРНУТЬ 0
-      if (!('a' <= inputString[counter] && inputString[counter] <= 'z')) {
-        return FALSE;
-      } else {
+      counter = 0;
+      while (counter < strlen(word)) {
+        if ((checkArray[counter] == 0) && (workArray[counter] == 0)) {
+          workArray[counter] = 0;
+        } else {
+          workArray[counter] = 1;
+        }
         counter++;
       }
+
+      for (counter = 0; counter < strlen(word); counter++) {
+        checkArray[counter] = 0;
+      }
+
+      //ПРОВЕРКА НАЙДЕННЫХ БУКВ
+      int solvedLetters = 0;
+      for (counter = 0; counter < strlen(word); counter++) {
+        if (workArray[counter] == 1) {
+          solvedLetters++;
+        }
+      }
+
+      if (solvedLetters == strlen(word)) {
+        workStatus = TRUE;
+      }
+
+      //ВЫВОД СЛОВА
+      for (counter = 0; counter < strlen(word); counter++) {
+        if (workArray[counter] == 0) {
+          printf("_");
+        } else if (workArray[counter] == 1) {
+          printf("%c", word[counter]);
+        }
+      }
+      printf("\n\n");
     }
-    
-    return TRUE;
+
+    if (attempt == 7) {
+      printf("Correct word was: %s\n", word);
+      printf("YOU LOSE!\n\n");
+    } else {
+      printf("YOU WIN!\n\n");
+    }
+    //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
+    int decided = FALSE;
+    char decision[MAX_LENGTH];
+    while (decided == FALSE) {
+      printf("Do you want to play again? (y/n)\n");
+      scanf("%s", &decision[0]);
+      if (decision[0] == 'y') {
+        decided = TRUE;
+        replay = TRUE;
+        printf("\n\n");
+      } else if (decision[0] == 'n') {
+        decided = TRUE;
+        replay = FALSE;
+        printf("\n");
+      } else {
+        printf("Invalid input. Try again.\n\n");
+      }
+    }
   }
-  
-  void hangman(int attempt) {
-    if (attempt == 0) {
-      printf(" _________\n");
-      printf("|         \n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 1) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 2) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 3) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 4) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|         |\n");
-      printf("|        /|\n");
-      printf("|         |\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 5) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|         |\n");
-      printf("|        /|\\\n");
-      printf("|         |\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 6) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|         |\n");
-      printf("|        /|\\\n");
-      printf("|         |\n");
-      printf("|        / \n");
-      printf("|       / \n");
-      printf("|\n");
-      printf("|_______\n");
-    } else if (attempt == 7) {
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|         |\n");
-      printf("|        /|\\\n");
-      printf("|         |\n");
-      printf("|        / \\\n");
-      printf("|       /   \\\n");
-      printf("|\n");
-      printf("|_______\n\n");
+
+  return EXIT_SUCCESS;
+}
+
+void menu() {
+  printf(" _                                             \n");
+  printf("| |                                            \n");
+  printf("| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n");
+  printf("| '_ \\ / _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\ \n");
+  printf("| | | | (_| | | | | (_| | | | | | | (_| | | | | \n");
+  printf("|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_| \n");
+  printf("                    __/ |                      \n");
+  printf("                   |___/  \n");
+  printf("\n");
+  printf("By Alexey Chernikov and Andrey Gondaruk (IS_942)\n");
+  printf("\n");
+}
+int checkLowercase(char *inputString) {
+  int counter = 0;
+  while (counter < strlen(inputString)) {
+    //ЕСЛИ СИМВОЛ НЕ НИЖНЕГО РЕГИСТРA ВЕРНУТЬ 0
+    if (!('a' <= inputString[counter] && inputString[counter] <= 'z')) {
+      return FALSE;
+    } else {
+      counter++;
     }
+  }
+
+  return TRUE;
+}
+
+void hangman(int attempt) {
+  if (attempt == 0) {
+    printf(" _________\n");
+    printf("|         \n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 1) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 2) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|        ---\n");
+    printf("|       :^ ^:\n");
+    printf("|        ---\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 3) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|        ---\n");
+    printf("|       :^ ^:\n");
+    printf("|        ---\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 4) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|        ---\n");
+    printf("|       :^ ^:\n");
+    printf("|        ---\n");
+    printf("|         |\n");
+    printf("|        /|\n");
+    printf("|         |\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 5) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|        ---\n");
+    printf("|       :^ ^:\n");
+    printf("|        ---\n");
+    printf("|         |\n");
+    printf("|        /|\\\n");
+    printf("|         |\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 6) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|        ---\n");
+    printf("|       :^ ^:\n");
+    printf("|        ---\n");
+    printf("|         |\n");
+    printf("|        /|\\\n");
+    printf("|         |\n");
+    printf("|        / \n");
+    printf("|       / \n");
+    printf("|\n");
+    printf("|_______\n");
+  } else if (attempt == 7) {
+    printf(" _________\n");
+    printf("|         |\n");
+    printf("|         |\n");
+    printf("|        ---\n");
+    printf("|       :^ ^:\n");
+    printf("|        ---\n");
+    printf("|         |\n");
+    printf("|        /|\\\n");
+    printf("|         |\n");
+    printf("|        / \\\n");
+    printf("|       /   \\\n");
+    printf("|\n");
+    printf("|_______\n\n");
+  }
 }
 
