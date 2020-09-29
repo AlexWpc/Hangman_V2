@@ -124,6 +124,23 @@ int main(int argc, char *argv[]) {
             }
             counter++;
          }
+         
+         for (counter = 0; counter < strlen(word); counter++) {
+            checkArray[counter] = 0;
+         }
+
+         //ПРОВЕРКА НАЙДЕННЫХ БУКВ
+         int solvedLetters = 0;  
+         for (counter = 0; counter < strlen(word); counter++) {
+            if (workArray[counter] == 1) {
+               solvedLetters++;
+            }
+         }
+
+        
+         if (solvedLetters == strlen(word)) {
+            workStatus = TRUE;
+         }
     //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
       int decided = FALSE;
       char decision[MAX_LENGTH];
