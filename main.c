@@ -87,6 +87,44 @@ int main(int argc, char *argv[]) {
     printf("| (_| | (_) |\n");
     printf(" \__, |\___/");
     printf(" |___/ ");
+    
+    while ((workStatus == FALSE) && (attempt < 7)) {
+         printf("=========================================\n");
+         printf("The word contains %d letters.\n", (int)strlen(word));
+         printf("Enter a letter: ");
+         
+         
+         char letter[MAX_LENGTH];
+         scanf(" %s", &letter[0]);
+         printf("You entered: %c\n", letter[0]);
+
+         int unsolvedLetters = 0;
+         //ПРОВЕРКА БУКВЫ В СЛОВЕ
+         for (counter = 0; counter < strlen(word); counter++) {
+            if (word[counter] == letter[0]) {
+               checkArray[counter] = 1;
+            } else {
+               checkArray[counter] = 0;
+               unsolvedLetters++;
+            }
+         }
+    //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
+      int decided = FALSE;
+      char decision[MAX_LENGTH];
+      while (decided == FALSE) {
+         printf("Do you want to play again? (y/n)\n");
+         scanf("%s", &decision[0]);
+         if (decision[0] == 'y') {
+            decided = TRUE;
+            replay = TRUE;
+            printf("\n\n");
+         } else if (decision[0] == 'n') {
+            decided = TRUE;
+            replay = FALSE;
+            printf("\n");
+         } else {
+            printf("Invalid input. Try again.\n\n");
+         }
 
     return 0;
   }
@@ -114,23 +152,7 @@ int main(int argc, char *argv[]) {
         counter++;
       }
     }
-    //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
-      int decided = FALSE;
-      char decision[MAX_LENGTH];
-      while (decided == FALSE) {
-         printf("Do you want to play again? (y/n)\n");
-         scanf("%s", &decision[0]);
-         if (decision[0] == 'y') {
-            decided = TRUE;
-            replay = TRUE;
-            printf("\n\n");
-         } else if (decision[0] == 'n') {
-            decided = TRUE;
-            replay = FALSE;
-            printf("\n");
-         } else {
-            printf("Invalid input. Try again.\n\n");
-         }
+    
     return TRUE;
   }
   void hangman(int attempt) {
