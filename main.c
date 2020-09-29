@@ -7,7 +7,7 @@
 #define MAX_LENGTH 50
 void menu(void);
 
-void hangman(void);
+void hangman(int attempt);
 
 int checkLowercase(char *inputString);
 
@@ -116,8 +116,8 @@ int main(int argc, char *argv[]) {
     }
     return TRUE;
   }
-  void hangman(void) {
-    
+  void hangman(int attempt) {
+    if (attempt == 0) {
       printf(" _________\n");
       printf("|         \n");
       printf("|\n");
@@ -130,7 +130,7 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|\n");
       printf("|_______\n");
-    
+    } else if (attempt == 1) {
       printf(" _________\n");
       printf("|         |\n");
       printf("|         |\n");
@@ -144,27 +144,27 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|\n");
       printf("|_______\n");
-   
-      printf(" _________\n");
-      printf("|         |\n");
-      printf("|         |\n");
-      printf("|        ---\n");
-      printf("|       :^ ^:\n");
-      printf("|        ---\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|\n");
-      printf("|_______\n");
-    
+    } else if (attempt == 2) {
       printf(" _________\n");
       printf("|         |\n");
       printf("|         |\n");
       printf("|        ---\n");
       printf("|       :^ ^:\n");
       printf("|        ---\n");
+      printf("|\n");
+      printf("|\n");
+      printf("|\n");
+      printf("|\n");
+      printf("|\n");
+      printf("|\n");
+      printf("|_______\n");
+    } else if (attempt == 3) {
+      printf(" _________\n");
+      printf("|         |\n");
+      printf("|         |\n");
+      printf("|        ---\n");
+      printf("|       :^ ^:\n");
+      printf("|        ---\n");
       printf("|         |\n");
       printf("|         |\n");
       printf("|         |\n");
@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|\n");
       printf("|_______\n");
-    
+    } else if (attempt == 4) {
       printf(" _________\n");
       printf("|         |\n");
       printf("|         |\n");
@@ -186,7 +186,7 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|\n");
       printf("|_______\n");
-    
+    } else if (attempt == 5) {
       printf(" _________\n");
       printf("|         |\n");
       printf("|         |\n");
@@ -200,7 +200,7 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|\n");
       printf("|_______\n");
-    
+    } else if (attempt == 6) {
       printf(" _________\n");
       printf("|         |\n");
       printf("|         |\n");
@@ -214,7 +214,7 @@ int main(int argc, char *argv[]) {
       printf("|       / \n");
       printf("|\n");
       printf("|_______\n");
-    
+    } else if (attempt == 7) {
       printf(" _________\n");
       printf("|         |\n");
       printf("|         |\n");
@@ -228,5 +228,5 @@ int main(int argc, char *argv[]) {
       printf("|       /   \\\n");
       printf("|\n");
       printf("|_______\n\n");
-    
+    }
   }
