@@ -2,9 +2,12 @@
 
 void menu (void);
 
+void hangman (void);
+
 int main()
 {
 menu();
+hangman();
 
 return 0;
 }
@@ -20,5 +23,118 @@ void menu (void) {
     printf("\n");
     printf("By Alexey Chernikov and Andrey Gondaruk (IS_942)\n");
     printf("\n");
+}
+
+void hangman (void){
+    printf(" _________\n");
+    printf("|         \n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|\n");
+    printf("|_______\n");
+   
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|_______\n");
+  
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|        ---\n");
+        printf("|       :^ ^:\n");
+        printf("|        ---\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|_______\n");
+   
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|        ---\n");
+        printf("|       :^ ^:\n");
+        printf("|        ---\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|_______\n");
+ 
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|        ---\n");
+        printf("|       :^ ^:\n");
+        printf("|        ---\n");
+        printf("|         |\n");
+        printf("|        /|\n");
+        printf("|         |\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|_______\n");
+   
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|        ---\n");
+        printf("|       :^ ^:\n");
+        printf("|        ---\n");
+        printf("|         |\n");
+        printf("|        /|\\\n");
+        printf("|         |\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|\n");
+        printf("|_______\n");
+  
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|        ---\n");
+        printf("|       :^ ^:\n");
+        printf("|        ---\n");
+        printf("|         |\n");
+        printf("|        /|\\\n");
+        printf("|         |\n");
+        printf("|        / \n");
+        printf("|       / \n");
+        printf("|\n");
+        printf("|_______\n");
+   
+        printf(" _________\n");
+        printf("|         |\n");
+        printf("|         |\n");
+        printf("|        ---\n");
+        printf("|       :^ ^:\n");
+        printf("|        ---\n");
+        printf("|         |\n");
+        printf("|        /|\\\n");
+        printf("|         |\n");
+        printf("|        / \\\n");
+        printf("|       /   \\\n");
+        printf("|\n");
+        printf("|_______\n\n");
 }
 
