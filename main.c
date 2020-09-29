@@ -114,6 +114,23 @@ int main(int argc, char *argv[]) {
         counter++;
       }
     }
+    //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
+      int decided = FALSE;
+      char decision[MAX_LENGTH];
+      while (decided == FALSE) {
+         printf("Do you want to play again? (y/n)\n");
+         scanf("%s", &decision[0]);
+         if (decision[0] == 'y') {
+            decided = TRUE;
+            replay = TRUE;
+            printf("\n\n");
+         } else if (decision[0] == 'n') {
+            decided = TRUE;
+            replay = FALSE;
+            printf("\n");
+         } else {
+            printf("Invalid input. Try again.\n\n");
+         }
     return TRUE;
   }
   void hangman(int attempt) {
