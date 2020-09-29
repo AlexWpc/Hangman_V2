@@ -85,8 +85,8 @@ int main(int argc, char *argv[]) {
     printf("  __ _  ___ \n");
     printf(" / _` |/ _ \\n");
     printf("| (_| | (_) |\n");
-    printf(" \__, |\___/");
-    printf(" |___/ ");
+    printf(" \__, |\___/\n");
+    printf(" |___/ \n");
     
     while ((workStatus == FALSE) && (attempt < 7)) {
          printf("=========================================\n");
@@ -108,6 +108,22 @@ int main(int argc, char *argv[]) {
                unsolvedLetters++;
             }
          }
+          if (unsolvedLetters == strlen(word)) {
+            attempt++;
+         }
+         printf("Number of mistakes: %d\n", attempt);
+         hangman(attempt);
+
+         counter = 0;
+         while (counter < strlen(word)) {
+            if ((checkArray[counter] == 0) &&
+                (workArray[counter] == 0)){
+               workArray[counter] = 0;
+            } else {
+               workArray[counter] = 1;
+            }
+            counter++;
+         }
     //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
       int decided = FALSE;
       char decision[MAX_LENGTH];
@@ -125,6 +141,7 @@ int main(int argc, char *argv[]) {
          } else {
             printf("Invalid input. Try again.\n\n");
          }
+         
 
     return 0;
   }
@@ -268,4 +285,4 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|_______\n\n");
     }
-  }
+  
