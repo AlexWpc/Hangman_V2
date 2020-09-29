@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define TRUE 1
 #define FALSE 0
 #define MAX_LENGTH 50
-void menu(void);
+void menu();
 
 void hangman(int attempt);
 
@@ -13,7 +14,6 @@ int checkLowercase(char *inputString);
 
 int main(int argc, char *argv[]) {
   menu();
-  hangman();
 
   //СОЗДАЕМ МАССИВ ДЛЯ СЛОВАРНОГО ЛИСТА
   printf("How many words? \n");
@@ -82,10 +82,10 @@ int main(int argc, char *argv[]) {
       checkArray[counter] = 0;
     }
 
-    printf("  __ _  ___ \n");
-    printf(" / _` |/ _ \\n");
-    printf("| (_| | (_) |\n");
-    printf(" \__, |\___/\n");
+    printf("  __ _   ___ \n");
+    printf(" / _` | | _ | \n");
+    printf("| (_| | |(_)| \n");
+    printf(" |__, | |___| \n");
     printf(" |___/ \n");
     
     while ((workStatus == FALSE) && (attempt < 7)) {
@@ -141,6 +141,24 @@ int main(int argc, char *argv[]) {
          if (solvedLetters == strlen(word)) {
             workStatus = TRUE;
          }
+         
+         //ВЫВОД СЛОВА
+	for (counter = 0; counter < strlen(word); counter++) {
+	 	if (workArray[counter] == 0) {
+	 		printf("_");
+	  } else if (workArray[counter] == 1) {
+		printf("%c", word[counter]);
+			}
+		}
+	printf("\n\n");
+	}
+
+	if (attempt == 7) {
+		printf("Correct word was: %s\n", word);
+		printf("YOU LOSE!\n\n");
+	} else {
+		printf("YOU WIN!\n\n");
+} 
     //ПОЛЬЗОВАТЕЛЬ МОЖЕТ ВЫБРАТЬ ИГРАТЬ ЕЩЕ РАЗ ИЛИ ВЫЙТИ
       int decided = FALSE;
       char decision[MAX_LENGTH];
@@ -158,12 +176,15 @@ int main(int argc, char *argv[]) {
          } else {
             printf("Invalid input. Try again.\n\n");
          }
+       }
+     }
          
 
-    return 0;
-  }
+    return EXIT_SUCCESS;
+  
+ }
 
-  void menu(void) {
+  void menu() {
     printf(" _                                             \n");
     printf("| |                                            \n");
     printf("| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n");
@@ -189,6 +210,7 @@ int main(int argc, char *argv[]) {
     
     return TRUE;
   }
+  
   void hangman(int attempt) {
     if (attempt == 0) {
       printf(" _________\n");
@@ -302,4 +324,5 @@ int main(int argc, char *argv[]) {
       printf("|\n");
       printf("|_______\n\n");
     }
-  
+}
+
