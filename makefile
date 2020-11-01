@@ -11,7 +11,7 @@ OBJDIR=obj/
 SRCDIR=src/
 
 # общие файлы
-FILES=main.c
+FILES=main.c functions.c
 
 # объектные файлы приложения
 OBJ=$(patsubst %.c, $(OBJDIR)$(SRCDIR)%.o, $(FILES))
