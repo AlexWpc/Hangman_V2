@@ -23,13 +23,13 @@ int checkLowercase(char *inputString) {
         while (counter < strlen(inputString)) {
         //ЕСЛИ СИМВОЛ НЕ НИЖНЕГО РЕГИСТРA ВЕРНУТЬ 0
             if (!('a' <= inputString[counter] && inputString[counter] <= 'z')) {
-                return FALSE;
+                return 0;
             } else {
                 counter++;
             }
         }
 
-    return TRUE;
+    return 1;
 }
 
 void hangman(int attempt) {

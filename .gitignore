@@ -1,5 +1,4 @@
 *.o
 /.clang-format
 /main.o
-/main64.exe
-/main.exe
+/main
