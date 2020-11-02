@@ -7,7 +7,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MAX_LENGTH 50
+#define MAX_LENGTH 100
 
 int main(int argc, char *argv[]) {
   menu();
@@ -15,14 +15,14 @@ int main(int argc, char *argv[]) {
   //СОЗДАЕМ МАССИВ ДЛЯ СЛОВАРНОГО ЛИСТА
   printf("How many words? \n");
   int numOfWords = 0;
-  char numbs[100];
+  char numbs[MAX_LENGTH];
   while(1){
     scanf("%s", numbs);
     if (isdigit(numbs[0])){
         numOfWords = atoi(numbs);
         break;
     }else{
-         printf("Incorrect input\n");
+         printf("Incorrect input. Try again\n");
     }
   }
   char wordList[numOfWords][MAX_LENGTH];
@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
       printf("The word contains %d letters.\n", (int)strlen(word));
       printf("Enter a letter: ");
 
-      char letter[MAX_LENGTH];
+      char letter[1000];
       scanf("%s", &letter[0]);
       printf("You entered: %c\n", letter[0]);
 
