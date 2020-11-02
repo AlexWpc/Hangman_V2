@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "functions.h"
+#include <ctype.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -14,7 +15,16 @@ int main(int argc, char *argv[]) {
   //СОЗДАЕМ МАССИВ ДЛЯ СЛОВАРНОГО ЛИСТА
   printf("How many words? \n");
   int numOfWords = 0;
-  scanf("%d", &numOfWords);
+  char numbs[100];
+  while(1){
+    scanf("%s", numbs);
+    if (isdigit(numbs[0])){
+        numOfWords = atoi(numbs);
+        break;
+    }else{
+         printf("Incorrect input\n");
+    }
+  }
   char wordList[numOfWords][MAX_LENGTH];
   printf("\n");
 
@@ -23,11 +33,11 @@ int main(int argc, char *argv[]) {
   while (counter < numOfWords) {
     printf("_____________________________\n");
     printf("|                           |\n");
-    printf("|     What is word %d?       |\n", (counter + 1));
+    printf("|     What is word %d?      |\n", (counter + 1));
     printf("|                           |\n");
     printf("|***************************|\n");
     printf("|                           |\n");
-    printf("| Max length is 50 letters  |\n");
+    printf("| Max length is 20 letters  |\n");
     printf("| Lowercase ONLY            |\n");
     printf("|                           |\n");
     printf("-----------------------------\n");
@@ -90,7 +100,7 @@ int main(int argc, char *argv[]) {
       printf("Enter a letter: ");
 
       char letter[MAX_LENGTH];
-      scanf(" %s", &letter[0]);
+      scanf("%s", &letter[0]);
       printf("You entered: %c\n", letter[0]);
 
       int unsolvedLetters = 0;
