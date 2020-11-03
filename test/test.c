@@ -1,6 +1,11 @@
 #include "functions.h"
-#include <ctype.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+
+#include "ctest.h"
+
+CTEST(functions, checkLowercase)
+{
+    int expected = 1;
+    int result = checkLowercase("asduka");
+    ASSERT_EQUAL(expected, result);
+}
