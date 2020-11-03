@@ -37,12 +37,19 @@ int main(int argc, char *argv[]) {
     printf("|                           |\n");
     printf("|***************************|\n");
     printf("|                           |\n");
-    printf("| Max length is 20 letters  |\n");
+    printf("| Max length is 100 letters  |\n");
     printf("| Lowercase ONLY            |\n");
     printf("|                           |\n");
     printf("-----------------------------\n");
     char inputString[MAX_LENGTH];
-    scanf("%s", inputString);
+    while(1){
+      scanf("%s", inputString);
+      if (strlen(inputString) <= MAX_LENGTH){
+        break;
+      }else{
+        printf("You input too much letters, try again.\n");
+      }
+    }
 
     //ПРОВЕРКА СТРОКИ НА НИЖНИЙ РЕГИСТР
     if (checkLowercase(inputString) == TRUE) {
