@@ -3,34 +3,54 @@ CC=gcc
 
 # флаги
 CFLAGS=-c -Wall -Werror
+TFLAGS=-I thirdparty -I src
 
 # путь до объектных файлов
-OBJDIR=obj/
+OBJDIR=builder/
 
 # путь до исходников
 SRCDIR=src/
+# путь до тестов
+TSTDIR=test/
 
 # общие файлы
-FILES=main.c functions.c
+FILES=hangman.c functions.c
+
+#тест файл
+TESTF=test.c main.c
 
 # объектные файлы приложения
 OBJ=$(patsubst %.c, $(OBJDIR)$(SRCDIR)%.o, $(FILES))
 
+#объектные файлы тестов
+TESTOBJ=$(patsubst %.c, $(OBJDIR)$(TSTDIR)%.o, $(FILES) $(TESTF))
+
 # выходной файл
-EXECUTABLE=bin/main
+EXECUTABLE=bin/hangman
+TESTEXECUTABLE=bin/tests
 
-.PHONY: all run clean
+.PHONY: clean
 
-all: $(EXECUTABLE)
+all: $(EXECUTABLE) $(TESTEXECUTABLE)
 
 $(EXECUTABLE): $(OBJ)
 	$(CC) -o $@ $^
 
 $(OBJDIR)$(SRCDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -o $@ $^
+
+$(TESTEXECUTABLE): $(TESTOBJ)
+	$(CC) -o $@ $^
 	
-clean:
-	$(RM) $(OBJ) $(EXECUTABLE)
+$(OBJDIR)$(TSTDIR)%.o: $(TSTDIR)%.c
+	$(CC) $(CFLAGS) -o $@ $^ $(TFLAGS)
+
+
+$(OBJDIR)$(TSTDIR)%.o: $(SRCDIR)%.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean: 
+	$(RM) $(OBJ) $(TESTOBJ) $(EXECUTABLE) $(TESTEXECUTABLE)
 
 
 
