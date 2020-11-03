@@ -19,7 +19,7 @@ OBJ=$(patsubst %.c, $(OBJDIR)$(SRCDIR)%.o, $(FILES))
 # выходной файл
 EXECUTABLE=bin/main
 
-.PHONY: clean
+.PHONY: all run clean
 
 all: $(EXECUTABLE)
 
@@ -28,11 +28,9 @@ $(EXECUTABLE): $(OBJ)
 
 $(OBJDIR)$(SRCDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -o $@ $^
-
-format:
-    clang-format -i ./src/*.h
-    clang-format -i ./src/*.c
-    clang-format -i ./test/*c
-
+	
 clean:
 	$(RM) $(OBJ) $(EXECUTABLE)
+
+
+
