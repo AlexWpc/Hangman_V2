@@ -124,8 +124,8 @@ int main(int argc, char *argv[]) {
         } else {
           checkArray[counter] = 0;
           unsolvedLetters++;
+          }
         }
-      }
       if (unsolvedLetters == strlen(word)) {
         attempt++;
       }
