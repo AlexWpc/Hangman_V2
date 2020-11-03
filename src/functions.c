@@ -10,18 +10,19 @@
 void replayGame(char decision[], int* decided, int* replay)
 {
     if (decision[0] == 'y') {
-        *decided = TRUE;
-        *replay = TRUE;
+        *decided = 1;
+        *replay = 1;
         printf("\n\n");
     } else if (decision[0] == 'n') {
-        *decided = TRUE;
-        *replay = FALSE;
+        *decided = 1;
+        *replay = 0;
         printf("\n");
     } else {
-        *decided = FALSE;
-        *replay = FALSE;
-        printf("Invalid input. Try again.\n\n");
+        *decided = 0;
+        *replay = 0;
+        printf("Invalid input. Try again.\n\n"); 
     }
+    
 }
 
 void menu()
