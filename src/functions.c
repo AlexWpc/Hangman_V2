@@ -7,23 +7,25 @@
 #define FALSE 0
 #define TRUE 1
 
-void replayGame(char decision[], int *decided, int *replay){
+void replayGame(char decision[], int* decided, int* replay)
+{
     if (decision[0] == 'y') {
         *decided = TRUE;
         *replay = TRUE;
         printf("\n\n");
-      } else if (decision[0] == 'n') {
+    } else if (decision[0] == 'n') {
         *decided = TRUE;
         *replay = FALSE;
         printf("\n");
-      } else {
+    } else {
         *decided = FALSE;
         *replay = FALSE;
         printf("Invalid input. Try again.\n\n");
-      }
+    }
 }
 
-void menu() {
+void menu()
+{
     printf(" _                                             \n");
     printf("| |                                            \n");
     printf("| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  \n");
@@ -37,21 +39,23 @@ void menu() {
     printf("\n");
 }
 
-int checkLowercase(char *inputString) {
+int checkLowercase(char* inputString)
+{
     int counter = 0;
-        while (counter < strlen(inputString)) {
+    while (counter < strlen(inputString)) {
         //ЕСЛИ СИМВОЛ НЕ НИЖНЕГО РЕГИСТРA ВЕРНУТЬ 0
-            if (!('a' <= inputString[counter] && inputString[counter] <= 'z')) {
-                return 0;
-            } else {
-                counter++;
-            }
+        if (!('a' <= inputString[counter] && inputString[counter] <= 'z')) {
+            return 0;
+        } else {
+            counter++;
         }
+    }
 
     return 1;
 }
 
-void hangman(int attempt) {
+void hangman(int attempt)
+{
     if (attempt == 0) {
         printf(" _________\n");
         printf("|         \n");
