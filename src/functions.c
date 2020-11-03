@@ -4,6 +4,25 @@
 #include <string.h>
 #include <time.h>
 
+#define FALSE 0
+#define TRUE 1
+
+void replayGame(char decision[], int *decided, int *replay){
+    if (decision[0] == 'y') {
+        *decided = TRUE;
+        *replay = TRUE;
+        printf("\n\n");
+      } else if (decision[0] == 'n') {
+        *decided = TRUE;
+        *replay = FALSE;
+        printf("\n");
+      } else {
+        *decided = FALSE;
+        *replay = FALSE;
+        printf("Invalid input. Try again.\n\n");
+      }
+}
+
 void menu() {
     printf(" _                                             \n");
     printf("| |                                            \n");
