@@ -7,7 +7,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MAX_LENGTH 100
+#define MAX_LENGTH 101
 
 int main(int argc, char *argv[]) {
   menu();
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     char inputString[MAX_LENGTH];
     while(1){
       scanf("%s", inputString);
-      if (strlen(inputString) <= MAX_LENGTH){
+      if (strlen(inputString) < MAX_LENGTH){
         break;
       }else{
         printf("You input too much letters, try again.\n");
@@ -107,9 +107,15 @@ int main(int argc, char *argv[]) {
       printf("Enter a letter: ");
 
       char letter[1000];
-      scanf("%s", &letter[0]);
-      printf("You entered: %c\n", letter[0]);
-
+      while(1){
+        scanf("%s", &letter[0]);
+        if (strlen(letter) < 1000){
+            printf("You entered: %c\n", letter[0]);            
+            break;
+        }else{
+            printf("You entered too much letters, try again.\n");
+        }
+      }
       int unsolvedLetters = 0;
       //ПРОВЕРКА БУКВЫ В СЛОВЕ
       for (counter = 0; counter < strlen(word); counter++) {
