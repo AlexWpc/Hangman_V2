@@ -6,10 +6,10 @@
 
 void menu();
 
-int checkLowercase(char *inputString);
+int checkLowercase(char* inputString);
 
 void hangman(int attempt);
 
-void replayGame(char decision[], int *decided, int *replay);
+void replayGame(char decision[], int* decided, int* replay);
 
 #endif
