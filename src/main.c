@@ -9,7 +9,7 @@
 #define FALSE 0
 #define MAX_LENGTH 101
 
-int hangmans(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     menu();
 
