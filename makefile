@@ -14,16 +14,17 @@ SRCDIR=src/
 TSTDIR=test/
 
 # общие файлы
-FILES=hangman.c functions.c
-
+FILES=functions.c
+#повторяющиеся
+SLF=main.c
 #тест файл
-TESTF=test.c main.c
+TESTF=test.c 
 
 # объектные файлы приложения
-OBJ=$(patsubst %.c, $(OBJDIR)$(SRCDIR)%.o, $(FILES))
+OBJ=$(patsubst %.c, $(OBJDIR)$(SRCDIR)%.o, $(FILES) $(SLF))
 
 #объектные файлы тестов
-TESTOBJ=$(patsubst %.c, $(OBJDIR)$(TSTDIR)%.o, $(FILES) $(TESTF))
+TESTOBJ=$(patsubst %.c, $(OBJDIR)$(TSTDIR)%.o, $(FILES) $(TESTF) $(SLF))
 
 # выходной файл
 EXECUTABLE=bin/hangman
