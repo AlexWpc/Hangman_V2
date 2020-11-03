@@ -11,7 +11,7 @@ OBJDIR=obj/
 SRCDIR=src/
 
 # общие файлы
-FILES=main.c
+FILES=main.c functions.c
 
 # объектные файлы приложения
 OBJ=$(patsubst %.c, $(OBJDIR)$(SRCDIR)%.o, $(FILES))
@@ -28,6 +28,11 @@ $(EXECUTABLE): $(OBJ)
 
 $(OBJDIR)$(SRCDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -o $@ $^
+
+format:
+    clang-format -i ./src/*.h
+    clang-format -i ./src/*.c
+    clang-format -i ./test/*c
 
 clean:
 	$(RM) $(OBJ) $(EXECUTABLE)

@@ -4,6 +4,25 @@
 #include <string.h>
 #include <time.h>
 
+#define FALSE 0
+#define TRUE 1
+
+void replayGame(char decision[], int *decided, int *replay){
+    if (decision[0] == 'y') {
+        *decided = TRUE;
+        *replay = TRUE;
+        printf("\n\n");
+      } else if (decision[0] == 'n') {
+        *decided = TRUE;
+        *replay = FALSE;
+        printf("\n");
+      } else {
+        *decided = FALSE;
+        *replay = FALSE;
+        printf("Invalid input. Try again.\n\n");
+      }
+}
+
 void menu() {
     printf(" _                                             \n");
     printf("| |                                            \n");
@@ -23,13 +42,13 @@ int checkLowercase(char *inputString) {
         while (counter < strlen(inputString)) {
         //ЕСЛИ СИМВОЛ НЕ НИЖНЕГО РЕГИСТРA ВЕРНУТЬ 0
             if (!('a' <= inputString[counter] && inputString[counter] <= 'z')) {
-                return FALSE;
+                return 0;
             } else {
                 counter++;
             }
         }
 
-    return TRUE;
+    return 1;
 }
 
 void hangman(int attempt) {

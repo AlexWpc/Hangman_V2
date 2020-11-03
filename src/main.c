@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <functions.h>
+#include "functions.h"
+#include <ctype.h>
 
 #define TRUE 1
 #define FALSE 0
-#define MAX_LENGTH 50
+#define MAX_LENGTH 101
 
 int main(int argc, char *argv[]) {
   menu();
@@ -14,7 +15,16 @@ int main(int argc, char *argv[]) {
   //СОЗДАЕМ МАССИВ ДЛЯ СЛОВАРНОГО ЛИСТА
   printf("How many words? \n");
   int numOfWords = 0;
-  scanf("%d", &numOfWords);
+  char numbs[MAX_LENGTH];
+  while(1){
+    scanf("%s", numbs);
+    if (isdigit(numbs[0])){
+        numOfWords = atoi(numbs);
+        break;
+    }else{
+         printf("Incorrect input. Try again\n");
+    }
+  }
   char wordList[numOfWords][MAX_LENGTH];
   printf("\n");
 
@@ -23,16 +33,23 @@ int main(int argc, char *argv[]) {
   while (counter < numOfWords) {
     printf("_____________________________\n");
     printf("|                           |\n");
-    printf("|     What is word %d?       |\n", (counter + 1));
+    printf("|     What is word %d?      |\n", (counter + 1));
     printf("|                           |\n");
     printf("|***************************|\n");
     printf("|                           |\n");
-    printf("| Max length is 50 letters  |\n");
+    printf("| Max length is 100 letters  |\n");
     printf("| Lowercase ONLY            |\n");
     printf("|                           |\n");
     printf("-----------------------------\n");
     char inputString[MAX_LENGTH];
-    scanf("%s", inputString);
+    while(1){
+      scanf("%s", inputString);
+      if (strlen(inputString) < MAX_LENGTH){
+        break;
+      }else{
+        printf("You input too much letters, try again.\n");
+      }
+    }
 
     //ПРОВЕРКА СТРОКИ НА НИЖНИЙ РЕГИСТР
     if (checkLowercase(inputString) == TRUE) {
@@ -89,10 +106,16 @@ int main(int argc, char *argv[]) {
       printf("The word contains %d letters.\n", (int)strlen(word));
       printf("Enter a letter: ");
 
-      char letter[MAX_LENGTH];
-      scanf(" %s", &letter[0]);
-      printf("You entered: %c\n", letter[0]);
-
+      char letter[1000];
+      while(1){
+        scanf("%s", &letter[0]);
+        if (strlen(letter) < 1000){
+            printf("You entered: %c\n", letter[0]);            
+            break;
+        }else{
+            printf("You entered too much letters, try again.\n");
+        }
+      }
       int unsolvedLetters = 0;
       //ПРОВЕРКА БУКВЫ В СЛОВЕ
       for (counter = 0; counter < strlen(word); counter++) {
@@ -101,8 +124,8 @@ int main(int argc, char *argv[]) {
         } else {
           checkArray[counter] = 0;
           unsolvedLetters++;
+          }
         }
-      }
       if (unsolvedLetters == strlen(word)) {
         attempt++;
       }
@@ -158,17 +181,7 @@ int main(int argc, char *argv[]) {
     while (decided == FALSE) {
       printf("Do you want to play again? (y/n)\n");
       scanf("%s", &decision[0]);
-      if (decision[0] == 'y') {
-        decided = TRUE;
-        replay = TRUE;
-        printf("\n\n");
-      } else if (decision[0] == 'n') {
-        decided = TRUE;
-        replay = FALSE;
-        printf("\n");
-      } else {
-        printf("Invalid input. Try again.\n\n");
-      }
+      replayGame(decision, &decided, &replay);
     }
   }
 
