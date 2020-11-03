@@ -20,9 +20,8 @@ void replayGame(char decision[], int* decided, int* replay)
     } else {
         *decided = 0;
         *replay = 0;
-        printf("Invalid input. Try again.\n\n"); 
+        printf("Invalid input. Try again.\n\n");
     }
-    
 }
 
 void menu()
