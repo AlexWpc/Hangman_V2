@@ -26,7 +26,6 @@ void replayGame(char decision[], int* decided, int* replay)
     }
 }
 
-
 int checkLowercase(char* inputString)
 {
     int counter = 0;
@@ -162,7 +161,7 @@ int ScanNumOfWords(int numOfWords)
 {
     char numbs[MAX_LENGTH];
     printf("How many words? \n");
-    
+
     while (1) {
         scanf("%s", numbs);
         if (isdigit(numbs[0])) {
@@ -192,11 +191,12 @@ int InputLetters(char letter[], int length)
             printf("You entered too much letters, try again.\n");
             check = 1;
         }
-    } 
-    return check;   
+    }
+    return check;
 }
 
-int LetterCheck(int length, char word[], char letter[], int attempt, int checkArray[])
+int LetterCheck(
+        int length, char word[], char letter[], int attempt, int checkArray[])
 {
     int unsolvedLetters = 0;
     //ПРОВЕРКА БУКВЫ В СЛОВЕ
@@ -228,7 +228,7 @@ void ChecktoWork(int length, int checkArray[], int workArray[])
 
     for (counter = 0; counter < length; counter++) {
         checkArray[counter] = 0;
-        }
+    }
 }
 
 int SolvedLetterCheck(int length, int workStatus, int workArray[])
