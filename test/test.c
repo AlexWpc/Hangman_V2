@@ -1,7 +1,7 @@
-#include "functions.h"
-#include <stdio.h>
-#include "menu.h"
 #include "ctest.h"
+#include "functions.h"
+#include "menu.h"
+#include <stdio.h>
 #include <string.h>
 
 CTEST(functions, checkLowercase)
@@ -10,7 +10,6 @@ CTEST(functions, checkLowercase)
     int result = checkLowercase("asduka");
     ASSERT_EQUAL(expected, result);
 }
-
 
 CTEST(functions, LetterCheck_incorrect)
 {
