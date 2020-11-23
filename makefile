@@ -14,7 +14,7 @@ SRCDIR=src/
 TSTDIR=test/
 
 # общие файлы
-FILES=functions.c
+FILES=functions.c menu.c
 #повторяющиеся
 SLF=main.c
 #тест файл
