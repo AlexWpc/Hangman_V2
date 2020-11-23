@@ -1,10 +1,10 @@
 #include "functions.h"
+#include "menu.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "menu.h"
 
 #define FALSE 0
 #define TRUE 1
@@ -35,7 +35,6 @@ void menu(void)
     printf("\n");
 
     while (counter < numOfWords) {
-
         printf("_____________________________\n");
         printf("|                           |\n");
         printf("|     What is word %d?      |\n", (counter + 1));
@@ -46,7 +45,7 @@ void menu(void)
         printf("| Lowercase ONLY            |\n");
         printf("|                           |\n");
         printf("-----------------------------\n");
-       
+
         char inputString[MAX_LENGTH];
         while (1) {
             scanf("%s", inputString);
@@ -70,7 +69,7 @@ void menu(void)
         }
     }
     int replay = TRUE;
-    
+
     while (replay == TRUE) {
         //ВЫБОР СЛОВА ИЗ ЛИСТА
         srand(time(NULL));
@@ -91,26 +90,25 @@ void menu(void)
         for (int counter = 0; counter < length; counter++) {
             checkArray[counter] = 0;
         }
-    
+
         printf("  __ _   ___ \n");
         printf(" / _` | | _ | \n");
         printf("| (_| | |(_)| \n");
         printf(" |__, | |___| \n");
         printf(" |___/ \n");
-    
-    
+
         while ((workStatus == FALSE) && (attempt < 7)) {
             char letter[100];
             InputLetters(letter, length);
             attempt = LetterCheck(length, word, letter, attempt, checkArray);
-            
+
             printf("Number of mistakes: %d\n", attempt);
             hangman(attempt);
 
             ChecktoWork(length, checkArray, workArray);
-            
+
             workStatus = SolvedLetterCheck(length, workStatus, workArray);
-            
+
             //ВЫВОД СЛОВА
             for (int counter = 0; counter < length; counter++) {
                 if (workArray[counter] == 0) {
@@ -136,6 +134,6 @@ void menu(void)
             scanf("%s", &decision[0]);
             replayGame(decision, &decided, &replay);
         }
-    }               
+    }
 }
 
