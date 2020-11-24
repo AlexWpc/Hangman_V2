@@ -1,5 +1,5 @@
-#include "functions.h"
 #include "menu.h"
+#include "functions.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
