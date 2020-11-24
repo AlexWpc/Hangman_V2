@@ -19,7 +19,7 @@ int InputLetters(char letter[], int length);
 
 int LetterCheck(
   
-    int length, char word[], char letter[], int attempt, int checkArray[]);
+        int length, char word[], char letter[], int attempt, int checkArray[]);
 
 void ChecktoWork(int length, int checkArray[], int workArray[]);
 
